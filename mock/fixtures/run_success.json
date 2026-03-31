@@ -1,0 +1,344 @@
+[
+  {
+    "type": "run_started",
+    "timestamp": 0,
+    "run_id": "run-success-1",
+    "query": "Generate a market summary of AI agents in finance."
+  },
+  {
+    "type": "task_spawned",
+    "timestamp": 100,
+    "task_id": "t1",
+    "label": "Clarify user intent",
+    "agent": "Coordinator",
+    "parallel_group": null,
+    "depends_on": []
+  },
+  {
+    "type": "task_update",
+    "timestamp": 200,
+    "task_id": "t1",
+    "status": "running"
+  },
+  {
+    "type": "agent_thought",
+    "timestamp": 300,
+    "task_id": "t1",
+    "agent": "Coordinator",
+    "content": "Understanding whether the user needs a vendor landscape, capabilities overview, or orchestration patterns."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 500,
+    "task_id": "t1",
+    "content": "User wants a high-level overview focused on orchestration patterns in finance...",
+    "is_final": false,
+    "quality_score": null
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 700,
+    "task_id": "t1",
+    "content": "User wants a high-level overview with emphasis on coordinator-driven orchestration and auditability.",
+    "is_final": true,
+    "quality_score": 0.86
+  },
+  {
+    "type": "task_update",
+    "timestamp": 900,
+    "task_id": "t1",
+    "status": "complete"
+  },
+
+  {
+    "type": "task_spawned",
+    "timestamp": 1100,
+    "task_id": "t2",
+    "label": "Vendor landscape research",
+    "agent": "Researcher",
+    "parallel_group": "pg1",
+    "depends_on": ["t1"]
+  },
+  {
+    "type": "task_spawned",
+    "timestamp": 1150,
+    "task_id": "t3",
+    "label": "Architecture pattern analysis",
+    "agent": "Architect",
+    "parallel_group": "pg1",
+    "depends_on": ["t1"]
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1200,
+    "task_id": "t2",
+    "status": "running"
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1200,
+    "task_id": "t3",
+    "status": "running"
+  },
+
+  {
+    "type": "tool_call",
+    "timestamp": 1300,
+    "task_id": "t2",
+    "tool": "web_search",
+    "input_summary": "Search for AI orchestration vendors in finance."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 1500,
+    "task_id": "t2",
+    "tool": "web_search",
+    "output_summary": "Found 8 relevant vendors, with 3 production case studies in tier-1 banks."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 1600,
+    "task_id": "t2",
+    "content": "Preliminary vendor shortlist with compliance-ready deployment notes...",
+    "is_final": false,
+    "quality_score": null
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 1750,
+    "task_id": "t2",
+    "content": "Identified 8 orchestration vendors emphasizing compliance, observability, and governance.",
+    "is_final": true,
+    "quality_score": 0.82
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1800,
+    "task_id": "t2",
+    "status": "complete"
+  },
+
+  {
+    "type": "tool_call",
+    "timestamp": 1320,
+    "task_id": "t3",
+    "tool": "pattern_library",
+    "input_summary": "Retrieve orchestration patterns for regulated environments."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 1520,
+    "task_id": "t3",
+    "tool": "pattern_library",
+    "output_summary": "Fan-out/fan-in, coordinator-worker, and DAG-based execution patterns with audit hooks."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 1620,
+    "task_id": "t3",
+    "content": "Drafting comparison notes across fan-out/fan-in vs DAG execution...",
+    "is_final": false,
+    "quality_score": null
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 1780,
+    "task_id": "t3",
+    "content": "Compared execution models with an auditability lens and integration effort scoring.",
+    "is_final": true,
+    "quality_score": 0.88
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1820,
+    "task_id": "t3",
+    "status": "complete"
+  },
+
+  {
+    "type": "task_spawned",
+    "timestamp": 1900,
+    "task_id": "t4",
+    "label": "Enrich with additional evidence",
+    "agent": "Analyst",
+    "parallel_group": "pg2",
+    "depends_on": ["t2", "t3"]
+  },
+  {
+    "type": "task_spawned",
+    "timestamp": 1950,
+    "task_id": "t5",
+    "label": "Pull additional examples (optimized away)",
+    "agent": "Researcher",
+    "parallel_group": "pg2",
+    "depends_on": ["t2", "t3"]
+  },
+  {
+    "type": "task_update",
+    "timestamp": 2000,
+    "task_id": "t4",
+    "status": "running"
+  },
+  {
+    "type": "task_update",
+    "timestamp": 2010,
+    "task_id": "t5",
+    "status": "running"
+  },
+
+  {
+    "type": "tool_call",
+    "timestamp": 2100,
+    "task_id": "t4",
+    "tool": "web_search",
+    "input_summary": "Find extra case studies on orchestration governance and observability."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 2300,
+    "task_id": "t4",
+    "tool": "web_search",
+    "output_summary": "One relevant case study, plus two partial references."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 2400,
+    "task_id": "t4",
+    "content": "Synthesizing new governance signals into the vendor comparison matrix...",
+    "is_final": false,
+    "quality_score": null
+  },
+  {
+    "type": "task_update",
+    "timestamp": 2550,
+    "task_id": "t4",
+    "status": "failed",
+    "reason": "Temporary tool timeout; will retry once."
+  },
+  {
+    "type": "task_update",
+    "timestamp": 2650,
+    "task_id": "t4",
+    "status": "running"
+  },
+  {
+    "type": "tool_call",
+    "timestamp": 2700,
+    "task_id": "t4",
+    "tool": "web_search",
+    "input_summary": "Retry evidence fetch for governance and auditability references."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 2900,
+    "task_id": "t4",
+    "tool": "web_search",
+    "output_summary": "Recovered full reference set."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 3000,
+    "task_id": "t4",
+    "content": "Final evidence enrichment integrated; updated governance scoring completed.",
+    "is_final": true,
+    "quality_score": 0.9
+  },
+  {
+    "type": "task_update",
+    "timestamp": 3050,
+    "task_id": "t4",
+    "status": "complete"
+  },
+
+  {
+    "type": "tool_call",
+    "timestamp": 2120,
+    "task_id": "t5",
+    "tool": "web_search",
+    "input_summary": "Search for additional deployment examples."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 2320,
+    "task_id": "t5",
+    "tool": "web_search",
+    "output_summary": "Additional examples are redundant with existing case studies."
+  },
+  {
+    "type": "task_update",
+    "timestamp": 2400,
+    "task_id": "t5",
+    "status": "cancelled",
+    "reason": "sufficient_data"
+  },
+
+  {
+    "type": "task_spawned",
+    "timestamp": 3200,
+    "task_id": "t6",
+    "label": "Synthesis and recommendation",
+    "agent": "Coordinator",
+    "parallel_group": null,
+    "depends_on": ["t4"]
+  },
+  {
+    "type": "task_update",
+    "timestamp": 3250,
+    "task_id": "t6",
+    "status": "running"
+  },
+  {
+    "type": "agent_thought",
+    "timestamp": 3300,
+    "task_id": "t6",
+    "agent": "Coordinator",
+    "content": "Summarize trade-offs and produce analyst-ready guidance."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 3400,
+    "task_id": "t6",
+    "content": "Drafting final analyst summary...",
+    "is_final": false
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 3600,
+    "task_id": "t6",
+    "content": "Recommended approach: coordinator-driven DAG with fan-out/fan-in, cancellation on sufficient evidence, and a synthesis step for governance-ready output.",
+    "is_final": true
+  },
+  {
+    "type": "task_update",
+    "timestamp": 3650,
+    "task_id": "t6",
+    "status": "complete"
+  },
+
+  {
+    "type": "run_complete",
+    "timestamp": 3700,
+    "run_id": "run-success-1",
+    "status": "complete",
+    "duration_ms": 21400,
+    "task_count": 6,
+    "output": {
+      "summary": "Coordinator-driven DAG of agents with fan-out/fan-in, selective cancellation when sufficient evidence is reached, and a dedicated synthesis step for analyst-ready output.",
+      "citations": [
+        {
+          "ref_id": "c1",
+          "title": "Orchestrating AI Agents in Regulated Environments",
+          "source": "Internal whitepaper",
+          "page": 12
+        },
+        {
+          "ref_id": "c2",
+          "title": "Case Study: Agent Pipelines in Tier-1 Banks",
+          "source": "Internal case study",
+          "page": 7
+        }
+      ]
+    }
+  }
+]
+

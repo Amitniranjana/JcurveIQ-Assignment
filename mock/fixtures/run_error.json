@@ -1,0 +1,217 @@
+[
+  {
+    "type": "run_started",
+    "timestamp": 0,
+    "run_id": "run-error-1",
+    "query": "Design a fully autonomous trading agent system."
+  },
+  {
+    "type": "task_spawned",
+    "timestamp": 100,
+    "task_id": "t1",
+    "label": "Initial requirement analysis",
+    "agent": "Coordinator",
+    "parallel_group": null,
+    "depends_on": []
+  },
+  {
+    "type": "task_update",
+    "timestamp": 200,
+    "task_id": "t1",
+    "status": "running"
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 400,
+    "task_id": "t1",
+    "content": "Clarifying regulatory and risk constraints...",
+    "is_final": false,
+    "quality_score": null
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 600,
+    "task_id": "t1",
+    "content": "System must comply with MiFID II and internal risk limits.",
+    "is_final": true,
+    "quality_score": 0.78
+  },
+  {
+    "type": "task_update",
+    "timestamp": 700,
+    "task_id": "t1",
+    "status": "complete"
+  },
+
+  {
+    "type": "task_spawned",
+    "timestamp": 900,
+    "task_id": "t2",
+    "label": "Risk scenario generation",
+    "agent": "RiskModeler",
+    "parallel_group": "pg1",
+    "depends_on": ["t1"]
+  },
+  {
+    "type": "task_spawned",
+    "timestamp": 950,
+    "task_id": "t3",
+    "label": "Strategy exploration",
+    "agent": "QuantResearcher",
+    "parallel_group": "pg1",
+    "depends_on": ["t1"]
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1000,
+    "task_id": "t2",
+    "status": "running"
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1000,
+    "task_id": "t3",
+    "status": "running"
+  },
+
+  {
+    "type": "tool_call",
+    "timestamp": 1100,
+    "task_id": "t2",
+    "tool": "risk_engine",
+    "input_summary": "Generate extreme market scenarios."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 1300,
+    "task_id": "t2",
+    "tool": "risk_engine",
+    "output_summary": "Produced 10k Monte Carlo scenarios."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 1400,
+    "task_id": "t2",
+    "content": "Summarizing scenario coverage...",
+    "is_final": false,
+    "quality_score": null
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1450,
+    "task_id": "t2",
+    "status": "failed",
+    "reason": "Temporary integration error; will retry."
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1550,
+    "task_id": "t2",
+    "status": "running"
+  },
+  {
+    "type": "tool_call",
+    "timestamp": 1650,
+    "task_id": "t2",
+    "tool": "risk_engine",
+    "input_summary": "Retry serialization + coverage summarization."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 1850,
+    "task_id": "t2",
+    "tool": "risk_engine",
+    "output_summary": "Re-produced scenario coverage summaries."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 1900,
+    "task_id": "t2",
+    "content": "Coverage includes equity, FX, and rate shocks.",
+    "is_final": true,
+    "quality_score": 0.74
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1950,
+    "task_id": "t2",
+    "status": "failed",
+    "reason": "Rate limit permanently exceeded after retries.",
+    "error": "Risk engine exhausted retry budget.",
+    "message": null
+  },
+
+  {
+    "type": "tool_call",
+    "timestamp": 1200,
+    "task_id": "t3",
+    "tool": "strategy_generator",
+    "input_summary": "Explore trading strategies under risk constraints."
+  },
+  {
+    "type": "tool_result",
+    "timestamp": 1500,
+    "task_id": "t3",
+    "tool": "strategy_generator",
+    "output_summary": "Generated 5 candidate strategies."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 1600,
+    "task_id": "t3",
+    "content": "Initial strategy set includes trend-following and mean-reversion hybrids.",
+    "is_final": true
+  },
+  {
+    "type": "task_update",
+    "timestamp": 1700,
+    "task_id": "t3",
+    "status": "complete"
+  },
+
+  {
+    "type": "task_spawned",
+    "timestamp": 2050,
+    "task_id": "t4",
+    "label": "Re-plan synthesis",
+    "agent": "Coordinator",
+    "parallel_group": "pg2",
+    "depends_on": ["t2", "t3"]
+  },
+  {
+    "type": "task_update",
+    "timestamp": 2100,
+    "task_id": "t4",
+    "status": "running"
+  },
+  {
+    "type": "agent_thought",
+    "timestamp": 2200,
+    "task_id": "t4",
+    "agent": "Coordinator",
+    "content": "Proceeding with partial synthesis while dependency t2 is unstable."
+  },
+  {
+    "type": "partial_output",
+    "timestamp": 2300,
+    "task_id": "t4",
+    "content": "Drafting a revised plan but expecting degraded completeness...",
+    "is_final": false
+  },
+  {
+    "type": "task_update",
+    "timestamp": 2450,
+    "task_id": "t4",
+    "status": "cancelled",
+    "reason": "sufficient_data",
+    "message": "Proceeding with partial synthesis using available scenarios."
+  },
+  {
+    "type": "run_error",
+    "timestamp": 2550,
+    "run_id": "run-error-1",
+    "message": "Coordinator encountered an unrecoverable error. Partial results may be available.",
+    "error": "Unrecoverable dependency failure in risk scenario generation."
+  }
+]
+
