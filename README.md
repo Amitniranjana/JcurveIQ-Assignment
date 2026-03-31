@@ -2,6 +2,11 @@
 
 This is the assessment implementation for the JcurveIQ Agent Run Panel. It uses **Next.js (App Router)**, **React hooks**, and **Tailwind CSS** to visualise a multi-agent run in real time from local fixtures.
 
+### Links
+
+- **Deployed**: `https://jcurve-iq-assignment.vercel.app/`
+- **GitHub**: `https://github.com/Amitniranjana/JcurveIQ-Assignment`
+
 ### Run locally
 
 ```bash
